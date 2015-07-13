@@ -1,11 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+eme1b1:
+  room: eme1
+  bed_number: 'EME1-B1'
+  
+eme1b2:
+  room: eme1
+  bed_number: 'EME1-B2'
+  
+eme1b3:
+  room: eme1
+  bed_number: 'EME-B3'
+  
+eme1b4:
+  room: eme1
+  bed_number: 'EME-B4'
+  
+inf1b1:
+  room: inf1
+  bed_number: 'INF1-B1'
+
+inf2b1:
+  room: inf2
+  bed_number: 'INF2-B1'
+  
