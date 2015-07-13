@@ -4,3 +4,8 @@ patient1:
   first_name: 'John'
   surname: 'Doe'
   date_of_birth: '01 Jan 1970'
+
+patient2: 
+  first_name: 'Fred'
+  surname: 'Flintstone'
+  date_of_birth: '01 Jan 1950'

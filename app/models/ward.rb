@@ -8,8 +8,8 @@ class Ward < ActiveRecord::Base
   # Method to find the first available bed on a ward.
   # 
   #
-  # Returns bed object on success or error on failure
-  # def find_available_bed
-  #     self.beds.
-  #   end  
+  # Returns bed object on success or nil on failure
+  def find_available_bed
+    rooms.includes(:beds).where(:beds=>{ :patient_id => nil}).try(:first).try(:beds).try(:first)
+  end  
 end

@@ -18,9 +18,11 @@ eme1b4:
   
 inf1b1:
   room: inf1
+  patient: patient1
   bed_number: 'INF1-B1'
 
 inf2b1:
   room: inf2
+  patient: patient2
   bed_number: 'INF2-B1'
   
