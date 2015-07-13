@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20150713093931) do
 
   create_table "beds", force: :cascade do |t|
     t.integer  "room_id"
+    t.integer  "patient_id"
     t.string   "bed_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

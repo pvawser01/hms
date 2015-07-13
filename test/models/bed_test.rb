@@ -17,4 +17,11 @@ class BedTest < ActiveSupport::TestCase
     assert_not bed.valid?, 'The bed should not save when room is full.'
   end
   
+  test '#occupied?' do
+    bed = beds(:eme1b1)
+    assert_not bed.occupied?, 'The bed should not be occupied when no patient is assigned.'
+    bed.patient = patients(:patient1)
+    assert bed.occupied?, 'The bed should be occupied when a patient is assigned.'
+  end
+  
 end
