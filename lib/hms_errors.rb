@@ -13,5 +13,13 @@ module HmsErrors
       end
     end
   end
+  
+  module Bed
+    class AlreadyAssigned < StandardError
+      def message 
+        "The bed is already assigned."
+      end
+    end  
+  end
  
 end

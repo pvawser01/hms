@@ -1,10 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-eme1b1:
+eme1b1:     
   room: eme1
   bed_number: 'EME1-B1'
   
 eme1b2:
+  patient: patient1
   room: eme1
   bed_number: 'EME1-B2'
   
@@ -25,4 +26,3 @@ inf2b1:
   room: inf2
   patient: patient2
   bed_number: 'INF2-B1'
-  

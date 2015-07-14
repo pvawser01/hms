@@ -17,3 +17,9 @@ patient3:
   first_name: 'Barney'
   surname: 'Rubble'
   date_of_birth: '01 Jan 1950'
+  
+patient4:
+  patient_category: emergency 
+  first_name: 'Betty'
+  surname: 'Rubble'
+  date_of_birth: '01 Jan 1950'

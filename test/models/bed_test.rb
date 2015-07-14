@@ -17,11 +17,27 @@ class BedTest < ActiveSupport::TestCase
     assert_not bed.valid?, 'The bed should not save when room is full.'
   end
   
-  test '#occupied?' do
+  test 'Bed#occupied?' do
     bed = beds(:eme1b1)
     assert_not bed.occupied?, 'The bed should not be occupied when no patient is assigned.'
     bed.patient = patients(:patient1)
     assert bed.occupied?, 'The bed should be occupied when a patient is assigned.'
+  end
+  
+  test 'Bed#assign_patient assigns the bed to the patient when bed is not occupied and patient is of right category.' do
+    bed = beds(:eme1b1)
+    assigned = bed.assign_patient( patients(:patient1) )
+    assert assigned, "The patient should have been assigned to an available bed."
+  end
+  
+  test 'Bed#assign_patient should not assign patinet to an already occupied bed' do
+    bed = beds(:eme1b2)
+    assert_raises(HmsErrors::Bed::AlreadyAssigned) { bed.assign_patient( patients(:patient4) ) }
+  end
+  
+  test 'Bed#assign_patinet should not assign patient to bed if category is not accepted onward' do
+    bed = beds(:eme1b2)
+    assert_raises(HmsErrors::Ward::PatientCategoryMismatch) { bed.assign_patient( patients(:patient2) ) }
   end
   
 end

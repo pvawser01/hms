@@ -20,8 +20,12 @@ class Ward < ActiveRecord::Base
   # 
   # PARAMETERS
   #   patient - the patient to be admitted.
+  # Raises Exceptions
+  #   HmsErrors::Ward::PatientCategoryMismatch
+  #   HmsErrors::Ward::NoAvailableBeds
   #
-  # Returns true on successful admission, else raises HmsErrors::Ward::NoAvailableBeds
+  # Returns true on successful admission else raises exception
+
   def admit!(patient)
     raise HmsErrors::Ward::PatientCategoryMismatch unless self.patient_category == patient.patient_category
     
@@ -30,6 +34,7 @@ class Ward < ActiveRecord::Base
     
     #Assign patient to bed.
     bed.patient = patient
+    bed.save!
     true
   end  
   

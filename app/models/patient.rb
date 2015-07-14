@@ -8,5 +8,4 @@ class Patient < ActiveRecord::Base
   validates_presence_of :first_name, :surname, :date_of_birth
   
   
-  
 end
