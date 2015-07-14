@@ -4,6 +4,11 @@ eme1:
   ward: emergency
   name: 'EME1'
 
+eme2:
+  ward: emergency
+  name: 'EME2'
+
+
 inf1:
   ward: infectious
   name: 'INF1'

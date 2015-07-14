@@ -40,4 +40,13 @@ class BedTest < ActiveSupport::TestCase
     assert_raises(HmsErrors::Ward::PatientCategoryMismatch) { bed.assign_patient( patients(:patient2) ) }
   end
   
+  test 'Bed#transfer should associate bed with new room on same ward' do
+    bed = beds(:eme1b2)
+    assert bed.transfer( rooms(:eme2) ), "The bed should have been transfered to another roomon same ward."
+  end 
+  
+  test 'Bed#transfer should not associate bed with new room on different ward' do
+    bed = beds(:eme1b2)
+    assert_raises(HmsErrors::Bed::CannotMoveOffWard) { bed.transfer( rooms(:inf1) ) }
+  end 
 end

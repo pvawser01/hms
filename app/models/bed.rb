@@ -34,6 +34,22 @@ class Bed < ActiveRecord::Base
     true
   end  
   
+  # Method to transfer a bed to another room on the same ward.
+  # 
+  # PARAMETERS
+  #   new_room - the new room to transfer bed to.
+  # Raises Exceptions
+  #   CannotMoveOffWard
+  #
+  # Returns true on successful transfer else raises exception
+  def transfer(new_room)
+    raise HmsErrors::Bed::CannotMoveOffWard unless self.room.ward == new_room.ward
+    
+    self.room = new_room
+    self.save!
+    true
+  end  
+  
 private
   def can_accommodate_bed
     if room.beds.size > 4

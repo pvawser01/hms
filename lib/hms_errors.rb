@@ -19,7 +19,13 @@ module HmsErrors
       def message 
         "The bed is already assigned."
       end
-    end  
+    end
+    
+    class CannotMoveOffWard < StandardError
+      def message
+        "The bed can not be moved off ward."
+      end 
+    end
   end
  
 end
