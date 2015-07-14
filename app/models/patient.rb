@@ -1,5 +1,7 @@
 class Patient < ActiveRecord::Base
   
+  include HmsErrors
+  
   belongs_to :patient_category
   has_one :bed
   
@@ -10,10 +12,14 @@ class Patient < ActiveRecord::Base
   # PARAMETERS
   #   ward - the ward to admit patient to.
   #
-  # Returns bed object on success or error on failure
-  # def admit!(ward)
-  #     # Find available bed on the ward
-  #     bed = ward.
-  #   end  
+  # Returns true on successful admission, else raises HmsErrors::Ward::NoAvailableBeds
+  def admit!(ward)
+    bed = ward.find_available_bed
+    
+    raise HmsErrors::Ward::NoAvailableBeds unless bed
+    
+    bed.patient = self
+    true
+  end  
   
 end
