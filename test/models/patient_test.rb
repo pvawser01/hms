@@ -22,15 +22,4 @@ class PatientTest < ActiveSupport::TestCase
     assert_not patient.valid?, 'The Patient should not save when missing date_of_birth.'   
   end
   
-  test 'Patient can be addmitted to a ward that has an empty bed' do
-    patient = patients(:patient1)
-    admitted = patient.admit!(wards(:emergency))
-    assert admitted, 'The patient should have been admitted when ward has empty beds.'
-  end  
-  
-  test 'Patient can not be addmitted to a ward that has no empty beds' do
-    patient = patients(:patient1)
-    assert_raises(HmsErrors::Ward::NoAvailableBeds) { patient.admit!(wards(:stable)) }
-  end
-  
 end

@@ -24,5 +24,15 @@ class WardTest < ActiveSupport::TestCase
     assert_not ward.find_available_bed, 'Bed was found when no beds available'
   end
   
+  test 'Ward#admit! can admit patient with the same patinet category and has available beds' do
+    patient = patients(:patient1)
+    admitted = wards(:emergency).admit!( patient )
+    assert admitted, 'The patient should have been admitted when patient category matches wards category.'
+  end  
+  
+  test 'Ward#admit! can not admit patient to a ward that has no empty beds' do
+    patient = patients(:patient3)
+    assert_raises(HmsErrors::Ward::NoAvailableBeds) { wards(:stable).admit!( patient ) }
+  end
   
 end
